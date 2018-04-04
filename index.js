@@ -8,7 +8,7 @@ let time = null;
 let out = null;
 const gpioNumber = process.argv[3] || 14;
 try {
-  out = new Gpio(gpioNumber, 'out');
+  out = new Gpio(parseInt(gpioNumber), 'out');
 } catch (err) {
   console.log('Error -> GPIO is not detected!!!');
 }
