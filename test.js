@@ -8,4 +8,4 @@ try {
   console.log('Error -> GPIO is not detected!!!');
 }
 
-out.writeSync(process.argv[2]);
+out.writeSync(parseInt(process.argv[2]));
