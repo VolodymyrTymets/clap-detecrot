@@ -8,7 +8,6 @@ let time = null;
 let out = null;
 const gpioNumber = process.argv[3] || 14;
 try {
-  console.log(`run on gpio [${gpioNumber}] with frequently ${freqArg} Hz (every ${frequently} microseconds) and ${timeONinPersent}% on.`);
   out = new Gpio(gpioNumber, 'out');
 } catch (err) {
   console.log('Error -> GPIO is not detected!!!');
