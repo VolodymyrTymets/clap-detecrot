@@ -2,8 +2,17 @@ const _ = require('lodash');
 const mic = require('mic');
 const WavDecoder = require('wav-decoder');
 const header = require("waveheader");
+const Gpio = require('onoff').Gpio;
 
 let time = null;
+let out = null;
+const gpioNumber = process.argv[3] || 14;
+try {
+  console.log(`run on gpio [${gpioNumber}] with frequently ${freqArg} Hz (every ${frequently} microseconds) and ${timeONinPersent}% on.`);
+  out = new Gpio(gpioNumber, 'out');
+} catch (err) {
+  console.log('Error -> GPIO is not detected!!!');
+}
 
 const config = {
   rate: 44100,
@@ -32,6 +41,9 @@ stream.on('data', buffer => {
         const maxAmplitude = _.max(wave);
         if (maxAmplitude > 0.7) {
          console.log('-----> clap');
+          if (out) {
+            out.writeSync(out.readSync() ^ 1);
+          }
         }
       })
       .catch(console.log);
