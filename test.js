@@ -7,7 +7,7 @@ try {
 } catch (err) {
   console.log('Error -> GPIO is not detected!!!');
 }
-console.log('was ->', out.readSync());
+console.log(`${ gpioNumber} was ->`, out.readSync());
 console.log('will *->', out.readSync() ^ 1);
 console.log('will ->', parseInt(process.argv[2]));
 out.writeSync(parseInt(process.argv[2]));
