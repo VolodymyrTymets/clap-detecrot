@@ -41,6 +41,7 @@ stream.on('data', buffer => {
         if (maxAmplitude > 0.7) {
          console.log('-----> clap');
           if (out) {
+            console.log('out ->', out.readSync() ^ 1);
             out.writeSync(out.readSync() ^ 1);
           }
         }
