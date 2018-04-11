@@ -6,8 +6,8 @@ const out = new Gpio(parseInt(gpioNumber), 'out');
 
 
 console.log('will *->', out.readSync() ^ 1);
-console.log('will ->', parseInt(process.argv[2]));
-out.writeSync(parseInt(process.argv[2]));
+console.log('will ->', parseInt(process.argv[3]));
+out.writeSync(parseInt(process.argv[3]));
 
 setInterval(function () {
   console.log(`${ gpioNumber} was ->`, out.readSync());
